@@ -1,17 +1,18 @@
-const router = require('express').Router();
-
-const { json } = require('express');
+const router = require('express').Router()
 const Items = require('./items-model');
 
 
-router.get('/', function getItems(req,res){
-    Items.find()
+// add item
+
+router.post('/',function createItem(req,res){
+    const newItem = req.body;
+
+    Items.create(newItem)
         .then((items)=>{
-            res.status(200).json({items})
+            res.status(201).json(newItem)
         })
         .catch((err)=>{
-            res.status(500).json({error:err.message})
+            res.status(400).json({error:err.message})
         })
 })
-
-module.exports = router;
+module.exports=router;
