@@ -4,6 +4,16 @@ const Items = require('./items-model');
 
 // add item
 
+router.get('/',function getAllItems(req,res){
+    Items.find()
+        .then((items)=>{
+            res.status(200).json(items)
+        })
+        .catch((err)=>{
+            res.status(500).json({error:err.message})
+        })
+})
+
 router.post('/',function createItem(req,res){
     const newItem = req.body;
 
