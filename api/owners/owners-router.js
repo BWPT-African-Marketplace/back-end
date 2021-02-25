@@ -1,5 +1,6 @@
 const Owners = require('./owners-model');
 const router = require('express').Router()
+const {checkIfLoggedIn} = require('../middleware/restricted');
 
 
 // ~/api/owners
@@ -13,7 +14,7 @@ router.get('/', function getUsers(req,res){
         })
 })
 
-router.get('/:id/items', function getOwnerItems(req,res){
+router.get('/:id/items', checkIfLoggedIn,function getOwnerItems(req,res){
     const {id} = req.params;
     Owners.findOwnerItems(id)
         .then((items)=>{
