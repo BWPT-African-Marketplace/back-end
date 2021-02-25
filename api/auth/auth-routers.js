@@ -8,28 +8,28 @@ const secrets = require('../../api/config/secrets')
 
 // register a new owner 
 
-router.post('/register', function createOwner(req,res){
-    const credentials = req.body;
+router.post('/register', (req, res) => {
+  
+  const credentials = req.body;
 
-    if(isValid(credentials)){
-        const rounds = process.env.BCRYPT_ROUNDS || 8;
-        const hash = bcryptjs.hashSync(credentials.password,rounds);
-        credentials.password =hash;
-    }
+  if(isValid(credentials)){
+    const rounds = process.env.BCRYPT_ROUNDS || 8;
+    const hash = bcryptjs.hashSync(credentials.password,rounds);
+    credentials.password = hash;
 
     if(!credentials.username || !credentials.password){
-        res.status(400).json({error:"username and password required"})
+      res.status(400).json({error:"username and password required"})
     }else{
-        Owners.create(credentials)
-        .then((owner)=>{
-            res.status(201).json({owners})
-        })
-        .catch((error)=>{
-            res.status(500).json({error:"username taken"})
-        })
+      Owners.create(credentials)
+      .then((owner)=>{
+        res.status(201).json({owner})
+      })
+      .catch((error)=>{
+        res.status(500).json({error:"username taken"})
+      })
     }
-
-})
+  }
+});
 
 
 //login 

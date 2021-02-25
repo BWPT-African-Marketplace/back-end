@@ -14,6 +14,17 @@ router.get('/',function getAllItems(req,res){
         })
 })
 
+router.get('/:id', function getItemById(req,res){
+    const {id} = req.params;
+    Items.findById()
+        .then((item)=>{
+            res.status(200).json(item)
+        })
+        .catch((err)=>{
+            res.status(500).json({error:err.message})
+        })
+})
+
 router.post('/',function createItem(req,res){
     const newItem = req.body;
 
@@ -25,4 +36,5 @@ router.post('/',function createItem(req,res){
             res.status(400).json({error:err.message})
         })
 })
+
 module.exports=router;
