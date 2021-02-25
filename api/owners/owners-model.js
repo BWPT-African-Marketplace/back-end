@@ -6,6 +6,7 @@ module.exports = {
     findBy,
     findById,
     create,
+    findOwnerItems,
 }
 
 
@@ -24,4 +25,11 @@ async function findById(id){
 async function create(newOwner){
     const [id] = await db('owners').insert(newOwner)
     return findById(id);
+}
+
+async function findOwnerItems(id){
+    return await db('owners as o')  
+        .join('items as i','o.id','i.owner_id')
+        .select('i.item_name','i.item_description','i.price')
+        .where('o.id','=',id)
 }
