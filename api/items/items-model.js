@@ -3,7 +3,8 @@ const db = require('../../data/dbConfig');
 module.exports = {
     find,
     create,
-    getItemLocations
+    getItemLocations,
+    update
 }
 
 async function find(){
@@ -20,4 +21,8 @@ async function getItemLocations(id){
         .innerJoin('items as i','il.item_id', 'i.id')
         .innerJoin('locations as l','il.location_id','l.id')
         .select('i.item_name','i.item_description','l.location_name')
+}
+
+async function update(id, changes){
+    return await db('items').where({ id }).update(changes);
 }

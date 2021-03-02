@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const router = require('express').Router()
 const Owners = require('../owners/owners-model')
 const {isValid} = require('../owners/owners-server');
-const secrets = require('../../api/config/secrets')
+const secrets = require('../items/config/secrets')
 
 
 // register a new owner 

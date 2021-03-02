@@ -1,6 +1,60 @@
 #back-end 
 
-Web Unit 4 - Node Rubric 
+
+## API DOCUMENTATION
+
+// Register API 
+
+// .post('https://african-marketplace-oz.herokuapp.com/api/register')
+
+    /* body {
+        username: username,
+        password: password
+    } */
+
+    //status code
+    //200 successful
+    // 400 username and password required
+    //500 system error 
+
+
+//login API 
+    //.post('https://african-marketplace-oz.herokuapp.com/api/login')
+
+    /* body{
+        username:username,
+        password:password
+    } */
+
+    //status code
+    //200 successful
+    // 400 username and password required
+    // 401 invalid credentials
+    //500 system error 
+
+// Items API 
+
+    //.get('/https://african-marketplace-oz.herokuapp.com/api/items')
+            // 200 successful 
+            // 500 system error
+
+    //.get('https://african-marketplace-oz.herokuapp.com/api/items/:id')
+            //200 successful
+            //400 id not found
+            // 500 system error
+
+    // .post(https://african-marketplace-oz.herokuapp.com/api/items')
+                // body - {'item_name', 'owner_id', 'location_id','catergory_id' reqiured}
+                    //201 successful created
+                    //401 please ensure all required fields have a value
+                    // 500 system error
+
+    //.put(https://african-marketplace-oz.herokuapp.com/api/items/:id)
+            //200 successfully updated
+            //404 id not found
+            //500 system error
+
+## Web Unit 4 - Node Rubric 
 
 Objectives
 

@@ -1,4 +1,5 @@
 const router = require('express').Router()
+const { update } = require('../../data/dbConfig');
 const Items = require('./items-model');
 
 
@@ -35,6 +36,22 @@ router.post('/',function createItem(req,res){
         .catch((err)=>{
             res.status(400).json({error:err.message})
         })
+})
+
+router.put('/:id', function updateItem(req,res){
+    const {id} = req.params;
+    const updatedItem = req.body;
+    if(!id){
+        res.status(404).json({message:"id not found"})
+    }else{
+        Items.update(id,updatedItem)
+        .then((item)=>{
+            res.status(200).json(updatedItem)
+        })
+        .catch((err)=>{
+            res.status(500).json({error:err.message})
+        })
+    }
 })
 
 module.exports=router;

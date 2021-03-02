@@ -15,7 +15,7 @@ exports.up = function(knex) {
   })
   .createTable('items', tbl => {
       tbl.increments();
-      tbl.string('item_name',128);
+      tbl.string('item_name',128).notNullable();
       tbl.string('item_description',256);
       tbl.float('price');
       tbl.integer('owner_id').unsigned().notNullable().references('owners.id').onDelete('CASCADE').onUpdate('CASCADE');
