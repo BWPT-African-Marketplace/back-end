@@ -1,6 +1,6 @@
 //* Import jsonwebtokens and the secrets
 const jwt = require("jsonwebtoken");
-const secrets = require("../config/secrets");
+const secrets = require("../items/config/secrets");
 
 //* Check if user is logged in
 const checkIfLoggedIn = (req, res, next) => {
