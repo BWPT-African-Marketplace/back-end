@@ -44,10 +44,10 @@
         // 500 system error
 
 // .post(https://african-marketplace-oz.herokuapp.com/api/items')
-// body - 'item_name', 'owner_id', 'location_id','catergory_id' reqiored
-        //201 successful created
-        //401 please ensure all required fields have a value
-        // 500 system error
+            // body - {'item_name', 'owner_id', 'location_id','catergory_id' reqiured}
+                //201 successful created
+                //401 please ensure all required fields have a value
+                // 500 system error
 
 //.put(https://african-marketplace-oz.herokuapp.com/api/items/:id)
         //200 successfully updated
