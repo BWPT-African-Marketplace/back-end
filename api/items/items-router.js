@@ -62,4 +62,21 @@ router.put('/:id', function updateItem(req,res){
     }
 })
 
+router.delete('/:id', function removeItem(req,res){
+    const {id} = req.params;
+    
+    if(!id){
+        res.status(404).json({message:"id not found"})
+    }else{
+        Items.remove(id)
+        .then((items)=>{
+            res.status(200).jsoon({message:"item deleted."})
+        })
+        .catch((err)=>{
+            res.status(500).json({error:err.message})
+        })
+    }
+    
+})
+
 module.exports=router;
