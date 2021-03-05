@@ -4,6 +4,8 @@ const server = express();
 const AuthRouter = require('../api/auth/auth-routers')
 const OwnersRouter = require('../api/owners/owners-router')
 const ItemRouter = require('../api/items/items-router')
+
+const proxySerer = require('cors-anywhere')
 server.use(express.json());
 server.use(cors());
 server.use('/api/items',ItemRouter);

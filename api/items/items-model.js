@@ -4,7 +4,8 @@ module.exports = {
     find,
     create,
     getItemLocations,
-    update
+    update,
+    remove
 }
 
 async function find(){
@@ -25,4 +26,8 @@ async function getItemLocations(id){
 
 async function update(id, changes){
     return await db('items').where({ id }).update(changes);
+}
+
+async function remove(id){
+    return await db('items').where({ id }).del();
 }
